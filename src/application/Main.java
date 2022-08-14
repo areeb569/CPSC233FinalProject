@@ -6,7 +6,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
 
@@ -16,9 +15,11 @@ public class Main extends Application {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			VBox root = loader.load(new FileInputStream("src/application/IntroScene.fxml"));
+			BankFunctions controller = (BankFunctions) (loader.getController());
+			controller.applicationStage = primaryStage;
 			Scene scene = new Scene(root,700,500);
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("Bank Management SYstem.");
+			primaryStage.setTitle("Bank Management System");
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
