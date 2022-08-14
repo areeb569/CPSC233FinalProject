@@ -18,7 +18,7 @@ public class Main extends Application {
 			VBox root = loader.load(new FileInputStream("src/application/IntroScene.fxml"));
 			Scene scene = new Scene(root,700,500);
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("Bank Management System");
+			primaryStage.setTitle("Bank Management SYstem.");
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
