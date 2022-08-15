@@ -138,7 +138,7 @@ public class BankFunctions {
 	
 	
 	 void computeResult() {
-
+		 double me = 0;
 	    	String nameEntered = "Ruth";
 	    	String accountEntered = "345678900";
 	    	
