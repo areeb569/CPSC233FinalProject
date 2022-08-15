@@ -59,6 +59,8 @@ public class BankFunctions {
 		Scene mainScene = applicationStage.getScene();
 		
 		VBox rows = new VBox();
+		double ruth = 0;
+		double me = 9;
 		
 		HBox withdraw = new HBox();
 		Label enterWithdraw = new Label("Enter the amount of money that you would "
