@@ -1,10 +1,10 @@
 package application;                            
  public class BankAccount {                     
 	double balance;                                
-	Investment InvestAccount;                      
-	Savings savingsAccount;                        
-	Checking checkingAccount;                      
-	public static String customerName;             
+	Investment investAccount ;                     
+	Savings savingsAccount ;                        
+	Checking checkingAccount ;               
+	public static String customerName;    
 	public static String customerId;               
 	                                               
 	BankAccount(String name, String id)            
