@@ -17,6 +17,8 @@ public class BankFunctions {
 	
 	String[] output = {"cheking", "saving","investment"};
 	double moneyToCompute[] = {0,0,0}; 
+	double withdrawToCompute[]= {0,0,0};
+	int check = 0;
 	Stage applicationStage;
 	
 	@FXML
@@ -40,26 +42,48 @@ public class BankFunctions {
 		rows.getChildren().add(doneButton);
 	}
 	
-	  void loadtheAmountEntered(Scene mainScene, ArrayList<TextField> checkingTextfield)
+	  void loadtheAmountEntered(Scene mainScene, ArrayList<TextField> checkingTextfield, int check)
 	    {
 	    	for(int i = 0; i <3; i ++)
 	    	{
-	    		moneyToCompute[i] = Double.parseDouble(checkingTextfield.get(i).getText());
+	    		if(check == 0)
+	    		{
+		    		moneyToCompute[i] = Double.parseDouble(checkingTextfield.get(i).getText());
+
+	    		}
+	    		if(check == 1)
+	    		{
+	    			withdrawToCompute[i] = Double.parseDouble(checkingTextfield.get(i).getText());
+
+	    		}
 
 	    	}
 	    	for(int i = 0; i <3; i ++)
 	    	{
-	    		System.out.println("the amount Entered for " +  output[i] + " is:  "+moneyToCompute[i]);
+	    		//System.out.println("the amount Entered for " +  output[i] + " is:  "+moneyToCompute[i]);
 	    		//moneyToCompute[i] = Double.parseDouble(checkingTextfield.get(i).getText());
 
+
+	    		if(check == 0)
+	    		{
+		    		System.out.println("the amount Entered for deposit " +  output[i] + " is:  "+moneyToCompute[i]);
+
+		    		System.out.println("check value is: "+ check);
+	    		}
+	    		if(check == 1)
+	    		{
+		    		System.out.println("the amount Entered for withdraw " +  output[i] + " is:  "+withdrawToCompute[i]);
+		    		System.out.println("check value is: "+ check);
+
+	    		}
 	    	}
+	    	
+	    	
 	    	applicationStage.setScene(mainScene);
 	    }
 	
 	@FXML
 	void depositMoney(ActionEvent event) {
-		
-		
 		
 		Scene mainScene = applicationStage.getScene();
     	int threeValuesToEnter = 3;
@@ -78,7 +102,7 @@ public class BankFunctions {
         	allRows.getChildren().add(checkingRow);
     	}
     	Button doneButton = new Button("Done");
-        doneButton.setOnAction(doneEvent-> loadtheAmountEntered(mainScene,moneyTextFields));
+        doneButton.setOnAction(doneEvent-> loadtheAmountEntered(mainScene,moneyTextFields,check));
         allRows.getChildren().add(doneButton);
     	
     	
@@ -88,50 +112,14 @@ public class BankFunctions {
 		
 		
 		
-		/*Scene mainScene = applicationStage.getScene();
-		double me = 234;
-		
-		VBox rows = new VBox();
-		
-		HBox deposit = new HBox();
-		Label enterDeposit = new Label("Enter the amount of money that you would "
-				+ "like to deposit from your account: ");
-		TextField depositNum = new TextField();
-		deposit.getChildren().addAll(enterDeposit, depositNum);
-		
-		rows.getChildren().addAll(deposit);
-		
-		Scene enterDepositScene = new Scene(rows,600,150);
-		applicationStage.setScene(enterDepositScene);
-		
-		Button doneButton = new Button("Done");
-		doneButton.setOnAction(doneEvent -> applicationStage.setScene(mainScene));
-		rows.getChildren().add(doneButton);
-	*/
+
 	}
 	
 	@FXML
 	void withdrawMoney(ActionEvent event) {
-		Scene mainScene = applicationStage.getScene();
-		
-		VBox rows = new VBox();
-		double ruth = 0;
-		double me = 9;
-		
-		HBox withdraw = new HBox();
-		Label enterWithdraw = new Label("Enter the amount of money that you would "
-				+ "like to deposit into your account: ");
-		TextField withdrawNum = new TextField();
-		withdraw.getChildren().addAll(enterWithdraw, withdrawNum);
-		
-		rows.getChildren().addAll(withdraw);
-		
-		Scene enterWithdrawScene = new Scene(rows,600,150);
-		applicationStage.setScene(enterWithdrawScene);
-		
-		Button doneButton = new Button("Done");
-		doneButton.setOnAction(doneEvent -> applicationStage.setScene(mainScene));
-		rows.getChildren().add(doneButton);
+		check = 1;
+		depositMoney(event);
+
 	}
 	
 	@FXML
