@@ -35,6 +35,7 @@ public class BankFunctions {
 	@FXML
 	void depositMoney(ActionEvent event) {
 		Scene mainScene = applicationStage.getScene();
+		double me = 234;
 		
 		VBox rows = new VBox();
 		
