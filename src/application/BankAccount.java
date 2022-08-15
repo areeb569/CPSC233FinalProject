@@ -1,9 +1,9 @@
 package application;                            
  public class BankAccount {                     
 	double balance;                                
-	//Investment InvestAccount;                      
-	//Savings savingsAccount;                        
-	//Checking checkingAccount;                      
+	Investment InvestAccount;                      
+	Savings savingsAccount;                        
+	Checking checkingAccount;                      
 	public static String customerName;             
 	public static String customerId;               
 	                                               
