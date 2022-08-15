@@ -13,7 +13,7 @@ public class BankFunctions {
 	
 	@FXML
 	void enterAccountInfo(ActionEvent event) {
-		//Scene mainScene = applicationStage.getScene();
+		Scene mainScene = applicationStage.getScene();
 		
 		VBox rows = new VBox();
 		
@@ -26,10 +26,16 @@ public class BankFunctions {
 		
 		Scene enterAccountInfoScene = new Scene(rows,400,150);
 		applicationStage.setScene(enterAccountInfoScene);
+		
+		Button doneButton = new Button("Done");
+		doneButton.setOnAction(doneEvent -> applicationStage.setScene(mainScene));
+		rows.getChildren().add(doneButton);
 	}
 	
 	@FXML
 	void depositMoney(ActionEvent event) {
+		Scene mainScene = applicationStage.getScene();
+		
 		VBox rows = new VBox();
 		
 		HBox deposit = new HBox();
@@ -42,10 +48,16 @@ public class BankFunctions {
 		
 		Scene enterDepositScene = new Scene(rows,600,150);
 		applicationStage.setScene(enterDepositScene);
+		
+		Button doneButton = new Button("Done");
+		doneButton.setOnAction(doneEvent -> applicationStage.setScene(mainScene));
+		rows.getChildren().add(doneButton);
 	}
 	
 	@FXML
 	void withdrawMoney(ActionEvent event) {
+		Scene mainScene = applicationStage.getScene();
+		
 		VBox rows = new VBox();
 		
 		HBox withdraw = new HBox();
@@ -58,6 +70,10 @@ public class BankFunctions {
 		
 		Scene enterWithdrawScene = new Scene(rows,600,150);
 		applicationStage.setScene(enterWithdrawScene);
+		
+		Button doneButton = new Button("Done");
+		doneButton.setOnAction(doneEvent -> applicationStage.setScene(mainScene));
+		rows.getChildren().add(doneButton);
 	}
 	
 	@FXML
