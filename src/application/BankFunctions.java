@@ -1,6 +1,9 @@
 package application;
 
+import java.util.ArrayList;
+
 import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -8,7 +11,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+
+
 public class BankFunctions {
+	
+	String[] output = {"cheking", "saving","investment"};
+	double moneyToCompute[] = {0,0,0}; 
 	Stage applicationStage;
 	
 	@FXML
@@ -32,9 +40,55 @@ public class BankFunctions {
 		rows.getChildren().add(doneButton);
 	}
 	
+	  void loadtheAmountEntered(Scene mainScene, ArrayList<TextField> checkingTextfield)
+	    {
+	    	for(int i = 0; i <3; i ++)
+	    	{
+	    		moneyToCompute[i] = Double.parseDouble(checkingTextfield.get(i).getText());
+
+	    	}
+	    	for(int i = 0; i <3; i ++)
+	    	{
+	    		System.out.println("the amount Entered for " +  output[i] + " is:  "+moneyToCompute[i]);
+	    		//moneyToCompute[i] = Double.parseDouble(checkingTextfield.get(i).getText());
+
+	    	}
+	    	applicationStage.setScene(mainScene);
+	    }
+	
 	@FXML
 	void depositMoney(ActionEvent event) {
+		
+		
+		
 		Scene mainScene = applicationStage.getScene();
+    	int threeValuesToEnter = 3;
+    	VBox allRows = new VBox();
+    	ArrayList<TextField> moneyTextFields = new ArrayList<TextField>();
+    	for(int i = 0; i <threeValuesToEnter; i++)
+    	{
+    		HBox checkingRow = new HBox();
+    		
+        	Label checkingLabel = new Label("Enter the deposit amount for the " + output[i] + " account");
+        	TextField checkingTextfield = new TextField();
+        	
+        	moneyTextFields.add(checkingTextfield);
+        	checkingRow.getChildren().addAll(checkingLabel,checkingTextfield);
+
+        	allRows.getChildren().add(checkingRow);
+    	}
+    	Button doneButton = new Button("Done");
+        doneButton.setOnAction(doneEvent-> loadtheAmountEntered(mainScene,moneyTextFields));
+        allRows.getChildren().add(doneButton);
+    	
+    	
+    	Scene valueEntered = new Scene(allRows);
+    	applicationStage.setScene(valueEntered);
+
+		
+		
+		
+		/*Scene mainScene = applicationStage.getScene();
 		double me = 234;
 		
 		VBox rows = new VBox();
@@ -53,6 +107,7 @@ public class BankFunctions {
 		Button doneButton = new Button("Done");
 		doneButton.setOnAction(doneEvent -> applicationStage.setScene(mainScene));
 		rows.getChildren().add(doneButton);
+	*/
 	}
 	
 	@FXML
