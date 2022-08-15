@@ -19,7 +19,19 @@ public class BankFunctions {
 	//customer.savingsAccount = new Savings(nameEntered, accountEntered);
 	//customer.checkingAccount= new Checking(nameEntered, accountEntered);
 	//customer.investAccount= new Investment(nameEntered, accountEntered);
+
 	
+	
+	BankAccount customer = new BankAccount("Ruth", "45678");
+	
+	Savings saveMoney = new Savings("","");
+	Checking checkingMoney = new Checking("","");
+	Investment investmentMoney = new Investment("","");
+	
+	//customer.savingsAccount = new Savings("Ruth", "45678");
+	// initialise();
+
+
 
 	String[] output = {"cheking", "saving","investment"};
 	double moneyToCompute[] = {0,0,0}; 
@@ -69,20 +81,21 @@ public class BankFunctions {
 	    		//System.out.println("the amount Entered for " +  output[i] + " is:  "+moneyToCompute[i]);
 	    		//moneyToCompute[i] = Double.parseDouble(checkingTextfield.get(i).getText());
 
-/*
+
 	    		if(check == 0)
 	    		{
 		    		System.out.println("the amount Entered for deposit " +  output[i] + " is:  "+moneyToCompute[i]);
 
 		    		System.out.println("check value is: "+ check);
+		    		System.out.println("the value in withdraw is "+ withdrawToCompute[i]);
 	    		}
 	    		if(check == 1)
 	    		{
 		    		System.out.println("the amount Entered for withdraw " +  output[i] + " is:  "+withdrawToCompute[i]);
 		    		System.out.println("check value is: "+ check);
-
+		    		System.out.println("the value in deposit is "+ moneyToCompute[i]);
 	    		}
-	    		*/
+	    		
 	    	}
 	    	
 	    	computeResult();
@@ -133,31 +146,36 @@ public class BankFunctions {
 	void showAccountInformation(ActionEvent event) {
 		
 	}
-	
-	
+
 	
 	
 	 void computeResult() {
 		 double me = 0;
-	    	String nameEntered = "Ruth";
-	    	String accountEntered = "345678900";
+	    //	String nameEntered = "Ruth";
+	    	//String accountEntered = "345678900";
 	    	
 	    	
 	    // trying to save it in the class
-	    	BankAccount customer = new BankAccount(nameEntered, accountEntered);
-	    	customer.savingsAccount = new Savings(nameEntered, accountEntered);
-	    	customer.checkingAccount= new Checking(nameEntered, accountEntered);
-	    	customer.investAccount= new Investment(nameEntered, accountEntered);
+	    	//BankAccount customer = new BankAccount(nameEntered, accountEntered);
+	    	//customer.savingsAccount = new Savings(nameEntered, accountEntered);
+	    	//customer.checkingAccount= new Checking(nameEntered, accountEntered);
+	    	//customer.investAccount= new Investment(nameEntered, accountEntered);
 	    	
 	    	// if the choice entered is 1 we need to deposit the money
+		 customer.savingsAccount = saveMoney;
+			customer.checkingAccount = checkingMoney;
+			customer.investAccount = investmentMoney;
 	    	
 	    	if (check == 0)
 	    	{
-	    		customer.checkingAccount.deposit(moneyToCompute[0]);
+	    		double toCompute1 = moneyToCompute[0];
+	    		double toCompute2 = moneyToCompute[1];
+	    		double toCompute3 = moneyToCompute[2];
+	    		customer.checkingAccount.deposit(toCompute1);
 	    		customer.checkingAccount.setCheckingAmount();
-	    		customer.savingsAccount.deposit(moneyToCompute[1]);
+	    		customer.savingsAccount.deposit(toCompute2);
 	    		customer.savingsAccount.setSavings();
-	    		customer.investAccount.deposit(moneyToCompute[2]);
+	    		customer.investAccount.deposit(toCompute3);
 	    		customer.investAccount.setInvestment();
 	    		
 	    		System.out.println("CHECKING AMOUNT ENTERED:  "+customer.checkingAccount.getCheckingAmount());
@@ -167,11 +185,15 @@ public class BankFunctions {
 	    	}
 	    	if(check == 1)
 	    	{
-	    		customer.checkingAccount.withdraw(withdrawToCompute[0]);
+	    		double toWithdraw1 = withdrawToCompute[0];
+	    		double toWithdraw2 = withdrawToCompute[1];
+	    		double toWithdraw3 = withdrawToCompute[2];
+
+	    		customer.checkingAccount.withdraw(toWithdraw1);
 	    		customer.checkingAccount.setCheckingAmount();
-	    		customer.savingsAccount.withdraw(withdrawToCompute[1]);
+	    		customer.savingsAccount.withdraw(toWithdraw2);
 	    		customer.savingsAccount.setSavings();
-	    		customer.investAccount.withdraw(withdrawToCompute[2]);
+	    		customer.investAccount.withdraw(toWithdraw3);
 	    		customer.investAccount.setInvestment();
 	    		
 	    		System.out.println("CHECKING AMOUNT ENTERED:  "+customer.checkingAccount.getCheckingAmount());
