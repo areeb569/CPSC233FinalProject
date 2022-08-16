@@ -86,7 +86,7 @@ public class BankFunctions {
     		System.out.println("The customer's name: " +customer.customerName);
     	}
     	else
-        	System.out.println(customer.customerName + " This is Inavaid Name. your name should be in form of (firstname lastname)");
+        	System.out.println(customer.customerName + " This is Inavalid Name. your name should be in form of (firstname lastname)");
     	
     	
 
@@ -210,6 +210,9 @@ public class BankFunctions {
 	    	
 	    }
 	 /*
+	  * Function Name: isValidAccountNumber
+	  * Arguments: String accountNumber( this is the customer ID)
+	  * 
 	  * this method validates the bank account number
 	  * the bank account number is valid if it is 6 digits integer number.
 	  * the first digit can not be 0
@@ -235,7 +238,9 @@ public class BankFunctions {
 		 return valid;
 	 }
 	 
-	 /*
+	 /* Function Name: isValidName()
+	  * arguments: String customerName
+	  * 
 	  * This function validates customer's name
 	  * A name is valid if it is only contains alphabetics characters,
 	  * if it has a first name and a last name
@@ -259,13 +264,27 @@ public class BankFunctions {
 		else if(customerName.length() < 3)
 			validName = false;
 		
-		else if(numberOfSpace != 1)
-			validName = false;
+		//else if(numberOfSpace != 1)
+			 //validName = false;
 		
 		
 		return validName;
 	 }
 	 
+	 /*
+	  * Validate Deposit and withdraw amount
+	  */
+	 
+	 boolean isValidAmount(double amount) {
+		 boolean validAmount = true;
+		 
+		 if(!(amount > 0))
+			 validAmount = false;
+		 //String str = String.valueOf(amount);
+		// else if(!)
+		 
+		 return validAmount;
+	 }
 	 
 	
 }
