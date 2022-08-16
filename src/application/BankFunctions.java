@@ -246,7 +246,7 @@ public class BankFunctions {
 	  */
 	 boolean isValidAccountNumber(String accountNumber) {
 		 boolean valid = true;
-		 
+		 double i=0;
 		 try 
 			{ 
 				Integer.parseInt(customer.customerId);  
@@ -308,7 +308,8 @@ public class BankFunctions {
 		 if(!(amount > 0))
 			 validAmount = false;
 		 //String str = String.valueOf(amount);
-		// else if(!)
+		// else if(!amount.hasNextDouble())
+		//	 validAmount = false;
 		 
 		 return validAmount;
 	 }
