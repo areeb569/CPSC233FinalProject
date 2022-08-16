@@ -1,6 +1,7 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 import javafx.event.ActionEvent;
 
@@ -75,8 +76,19 @@ public class BankFunctions {
     	
     	customer.customerName = accountInfo[0];
     	customer.customerId = accountInfo[1];
-    	System.out.println("The customer's name: " +customer.customerName);
-    	System.out.println("The customer's ID: " +customer.customerId);
+    	if(isValidAccountNumber(customer.customerId)) {
+    		System.out.println("The customer's ID: " + customer.customerId);
+    	}
+    	else
+    		System.out.println(customer.customerId + " Is invalid ID, the ID should be a 6 digits integer number");
+    		
+    	if(isValidName(customer.customerName)) {
+    		System.out.println("The customer's name: " +customer.customerName);
+    	}
+    	else
+        	System.out.println(customer.customerId + " This is Inavaid Name. your name should be in form of (firstname lastname)");
+    	
+    	
 
     		
 	    		
@@ -197,5 +209,63 @@ public class BankFunctions {
 	    	}
 	    	
 	    }
+	 /*
+	  * this method validates the bank account number
+	  * the bank account number is valid if it is 6 digits integer number.
+	  * the first digit can not be 0
+	  */
+	 boolean isValidAccountNumber(String accountNumber) {
+		 boolean valid = true;
+		 
+		 try 
+			{ 
+				Integer.parseInt(customer.customerId);  
+				
+			}  
+			catch (NumberFormatException e)  
+			{ 
+				valid = false;
+				//System.out.println(customer.customerId + " is not a valid account number"); 
+			} 
+		 
+		 if(valid && customer.customerId.length() != 6)
+			 valid = false;
+			 
+		 
+		 return valid;
+	 }
+	 
+	 /*
+	  * This function validates customer's name
+	  * A name is valid if it is only contains alphabetics characters,
+	  * if it has a first name and a last name
+	  */
+	 boolean isValidName(String customerName) {
+		boolean validName = true;
+		int numberOfSpace =0;
+		
+		for(int i=0; i<=customer.customerName.length()-1; i++) {
+			if(customer.customerName.charAt(i)== ' ') {
+				numberOfSpace++;
+			}
+		}
+		
+		if(!Pattern.matches("[a-zA-Z]+", customerName))
+			validName = false;
+		
+		else if(customerName == null)
+			validName = false;
+		
+		else if(customerName.length() < 3)
+			validName = false;
+		
+		else if(numberOfSpace != 1)
+			validName = false;
+		
+		
+		return validName;
+	 }
+	 
+	 
 	
 }
