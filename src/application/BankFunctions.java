@@ -14,26 +14,17 @@ import javafx.stage.Stage;
 
 
 public class BankFunctions {
-	
-	//BankAccount customer = new BankAccount("", "");
-	//customer.savingsAccount = new Savings(nameEntered, accountEntered);
-	//customer.checkingAccount= new Checking(nameEntered, accountEntered);
-	//customer.investAccount= new Investment(nameEntered, accountEntered);
 
+	String[] accountInfo = {"",""};
+	BankAccount customer = new BankAccount("", "");
 	
+	Savings saveMoney = new Savings("", "");
+	Checking checkingMoney = new Checking("", "");
+	Investment investmentMoney = new Investment("", "");
 	
-	BankAccount customer = new BankAccount("Ruth", "45678");
-	
-	Savings saveMoney = new Savings("","");
-	Checking checkingMoney = new Checking("","");
-	Investment investmentMoney = new Investment("","");
-	
-	//customer.savingsAccount = new Savings("Ruth", "45678");
-	// initialise();
-
-
 
 	String[] output = {"cheking", "saving","investment"};
+	
 	double moneyToCompute[] = {0,0,0}; 
 	double withdrawToCompute[]= {0,0,0};
 	int check = 0;
@@ -41,24 +32,59 @@ public class BankFunctions {
 	
 	@FXML
 	void enterAccountInfo(ActionEvent event) {
+		
+		
 		Scene mainScene = applicationStage.getScene();
+    	VBox allRows = new VBox();
+    	ArrayList<TextField> moneyTextFields = new ArrayList<TextField>();
+    		HBox checkingRow1 = new HBox();
+    		HBox checkingRow2 = new HBox();
+        	Label checkingLabel1 = new Label("Enter the customers' full name");
+        	Label checkingLabel2 = new Label("Enter the customer's account number");
+
+        	TextField checkingTextfield1 = new TextField();
+        	TextField checkingTextfield2 = new TextField();
+
+        	
+        	moneyTextFields.add(checkingTextfield1);
+        	moneyTextFields.add(checkingTextfield2);
+
+        	checkingRow1.getChildren().addAll(checkingLabel1,checkingTextfield1);
+        	checkingRow1.getChildren().addAll(checkingLabel2,checkingTextfield2);
+
+        	allRows.getChildren().add(checkingRow1);
+        	allRows.getChildren().add(checkingRow2);
+
+    	Button doneButton = new Button("Done");
+        doneButton.setOnAction(doneEvent-> loadtheAccountEntered(mainScene,moneyTextFields,check));
+        allRows.getChildren().add(doneButton);
+    	
+    	
+    	Scene valueEntered = new Scene(allRows);
+    	applicationStage.setScene(valueEntered);
 		
-		VBox rows = new VBox();
-		
-		HBox accountID = new HBox();
-		Label enterAccountID = new Label("Enter account ID Number: ");
-		TextField IDNum = new TextField();
-		accountID.getChildren().addAll(enterAccountID, IDNum);
-		
-		rows.getChildren().addAll(accountID);
-		
-		Scene enterAccountInfoScene = new Scene(rows,400,150);
-		applicationStage.setScene(enterAccountInfoScene);
-		
-		Button doneButton = new Button("Done");
-		doneButton.setOnAction(doneEvent -> applicationStage.setScene(mainScene));
-		rows.getChildren().add(doneButton);
+	
+	
 	}
+	void loadtheAccountEntered(Scene mainScene, ArrayList<TextField> checkingTextfield, int check)
+    {
+    	for(int i = 0; i <2; i++)
+    	{
+    		accountInfo[i] = checkingTextfield.get(i).getText();
+    	}
+    	
+    	customer.customerName = accountInfo[0];
+    	customer.customerId = accountInfo[1];
+    	System.out.println("The customer's name: " +customer.customerName);
+    	System.out.println("The customer's ID: " +customer.customerId);
+
+    		
+	    		
+		applicationStage.setScene(mainScene);
+    }
+	
+	
+	
 	
 	  void loadtheAmountEntered(Scene mainScene, ArrayList<TextField> checkingTextfield, int check)
 	    {
@@ -76,28 +102,7 @@ public class BankFunctions {
 	    		}
 
 	    	}
-	    	for(int i = 0; i <3; i ++)
-	    	{
-	    		//System.out.println("the amount Entered for " +  output[i] + " is:  "+moneyToCompute[i]);
-	    		//moneyToCompute[i] = Double.parseDouble(checkingTextfield.get(i).getText());
-
-
-	    		if(check == 0)
-	    		{
-		    		System.out.println("the amount Entered for deposit " +  output[i] + " is:  "+moneyToCompute[i]);
-
-		    		System.out.println("check value is: "+ check);
-		    		System.out.println("the value in withdraw is "+ withdrawToCompute[i]);
-	    		}
-	    		if(check == 1)
-	    		{
-		    		System.out.println("the amount Entered for withdraw " +  output[i] + " is:  "+withdrawToCompute[i]);
-		    		System.out.println("check value is: "+ check);
-		    		System.out.println("the value in deposit is "+ moneyToCompute[i]);
-	    		}
-	    		
-	    	}
-	    	
+	  
 	    	computeResult();
 	    	applicationStage.setScene(mainScene);
 	    }
@@ -150,18 +155,7 @@ public class BankFunctions {
 	
 	
 	 void computeResult() {
-		 double me = 0;
-	    //	String nameEntered = "Ruth";
-	    	//String accountEntered = "345678900";
-	    	
-	    	
-	    // trying to save it in the class
-	    	//BankAccount customer = new BankAccount(nameEntered, accountEntered);
-	    	//customer.savingsAccount = new Savings(nameEntered, accountEntered);
-	    	//customer.checkingAccount= new Checking(nameEntered, accountEntered);
-	    	//customer.investAccount= new Investment(nameEntered, accountEntered);
-	    	
-	    	// if the choice entered is 1 we need to deposit the money
+	  
 		 customer.savingsAccount = saveMoney;
 			customer.checkingAccount = checkingMoney;
 			customer.investAccount = investmentMoney;
