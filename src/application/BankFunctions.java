@@ -97,7 +97,10 @@ public class BankFunctions {
 	
 	
 	
-	
+	// this function loggs the user input entered in the changing scene text field for
+	//the deposit and withdraw function.
+	// money to compute is an array of double declared at the top of the program to
+	//store the 3 values from the changing scene 
 	  void loadtheAmountEntered(Scene mainScene, ArrayList<TextField> checkingTextfield, int check)
 	    {
 	    	for(int i = 0; i <3; i ++)
@@ -118,7 +121,8 @@ public class BankFunctions {
 	    	computeResult();
 	    	applicationStage.setScene(mainScene);
 	    }
-	
+	// this function creates a new scene. it is used also for the function withdraw
+	  // just to prevent the code duplication
 	@FXML
 	void depositMoney(ActionEvent event) {
 		
@@ -184,12 +188,16 @@ public class BankFunctions {
 	
 	 void computeResult() {
 	  
+		 // this operation was done prevent memory leaks
 		 customer.savingsAccount = saveMoney;
 			customer.checkingAccount = checkingMoney;
 			customer.investAccount = investmentMoney;
 	    	
 	    	if (check == 0)
 	    	{
+	    		// it was prefered to store the value entered in the chaging 
+	    		//scene in a double first before because arrays are passed by reference
+	    		// this prevents possible privacy leaks
 	    		double toCompute1 = moneyToCompute[0];
 	    		double toCompute2 = moneyToCompute[1];
 	    		double toCompute3 = moneyToCompute[2];
@@ -207,6 +215,9 @@ public class BankFunctions {
 	    	}
 	    	if(check == 1)
 	    	{
+	    		// it was prefered to store the value entered in the chaging 
+	    		//scene in a double first before because arrays are passed by reference
+	    		// this prevents possible privacy leaks
 	    		double toWithdraw1 = withdrawToCompute[0];
 	    		double toWithdraw2 = withdrawToCompute[1];
 	    		double toWithdraw3 = withdrawToCompute[2];
