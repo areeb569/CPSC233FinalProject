@@ -165,7 +165,7 @@ public class BankFunctions {
 	
 	@FXML
 	void showAccountInformation(ActionEvent event) {
-		Scene mainScene = applicationStage.getScene();
+		//Scene mainScene = applicationStage.getScene();
 		
 		VBox rows = new VBox();
 		Label customerName = new Label("Customer name: " + customer.customerName);
