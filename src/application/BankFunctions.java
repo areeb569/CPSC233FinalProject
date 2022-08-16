@@ -24,7 +24,7 @@ public class BankFunctions {
 	Investment investmentMoney = new Investment("", "");
 	
 
-	String[] output = {"cheking", "saving","investment"};
+	String[] output = {"checking", "saving","investment"};
 	
 	double moneyToCompute[] = {0,0,0}; 
 	double withdrawToCompute[]= {0,0,0};
@@ -40,7 +40,7 @@ public class BankFunctions {
     	ArrayList<TextField> moneyTextFields = new ArrayList<TextField>();
     		HBox checkingRow1 = new HBox();
     		HBox checkingRow2 = new HBox();
-        	Label checkingLabel1 = new Label("Enter the customers' full name");
+        	Label checkingLabel1 = new Label("Enter the customer's full name");
         	Label checkingLabel2 = new Label("Enter the customer's account number");
 
         	TextField checkingTextfield1 = new TextField();
