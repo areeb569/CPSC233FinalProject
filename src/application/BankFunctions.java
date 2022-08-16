@@ -86,7 +86,7 @@ public class BankFunctions {
     		System.out.println("The customer's name: " +customer.customerName);
     	}
     	else
-        	System.out.println(customer.customerId + " This is Inavaid Name. your name should be in form of (firstname lastname)");
+        	System.out.println(customer.customerName + " This is Inavaid Name. your name should be in form of (firstname lastname)");
     	
     	
 
