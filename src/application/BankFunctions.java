@@ -161,7 +161,23 @@ public class BankFunctions {
 	
 	@FXML
 	void showAccountInformation(ActionEvent event) {
+		Scene mainScene = applicationStage.getScene();
 		
+		VBox rows = new VBox();
+		Label customerName = new Label("Customer name: " + customer.customerName);
+		Label customerID = new Label("Customer ID: " + customer.customerId);
+		Label checkingAmount = new Label("Checking account amount: " + 
+				Double.toString(checkingMoney.balance));
+		Label savingAmount = new Label("Saving account amount: " + Double.toString(saveMoney.balance));
+		Label investmentAmount = new Label("Investment account amount: " + 
+				Double.toString(investmentMoney.balance));
+		rows.getChildren().addAll(customerName,customerID,checkingAmount,savingAmount,investmentAmount);
+		Button doneButton = new Button("Done");
+        doneButton.setOnAction(doneEvent-> applicationStage.setScene(mainScene));
+        rows.getChildren().add(doneButton);
+		
+		Scene showAccountInfoPage = new Scene(rows,400,400);
+		applicationStage.setScene(showAccountInfoPage);
 	}
 
 	
