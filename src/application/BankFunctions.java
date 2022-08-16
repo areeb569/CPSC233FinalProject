@@ -24,7 +24,7 @@ public class BankFunctions {
 	Investment investmentMoney = new Investment("", "");
 	
 
-	String[] output = {"cheking", "saving","investment"};
+	String[] output = {"checking", "saving","investment"};
 	
 	double moneyToCompute[] = {0,0,0}; 
 	double withdrawToCompute[]= {0,0,0};
@@ -40,7 +40,7 @@ public class BankFunctions {
     	ArrayList<TextField> moneyTextFields = new ArrayList<TextField>();
     		HBox checkingRow1 = new HBox();
     		HBox checkingRow2 = new HBox();
-        	Label checkingLabel1 = new Label("Enter the customers' full name");
+        	Label checkingLabel1 = new Label("Enter the customer's full name");
         	Label checkingLabel2 = new Label("Enter the customer's account number");
 
         	TextField checkingTextfield1 = new TextField();
@@ -97,7 +97,10 @@ public class BankFunctions {
 	
 	
 	
-	
+	// this function loggs the user input entered in the changing scene text field for
+	//the deposit and withdraw function.
+	// money to compute is an array of double declared at the top of the program to
+	//store the 3 values from the changing scene 
 	  void loadtheAmountEntered(Scene mainScene, ArrayList<TextField> checkingTextfield, int check)
 	    {
 	    	for(int i = 0; i <3; i ++)
@@ -118,7 +121,8 @@ public class BankFunctions {
 	    	computeResult();
 	    	applicationStage.setScene(mainScene);
 	    }
-	
+	// this function creates a new scene. it is used also for the function withdraw
+	  // just to prevent the code duplication
 	@FXML
 	void depositMoney(ActionEvent event) {
 		
@@ -161,19 +165,39 @@ public class BankFunctions {
 	
 	@FXML
 	void showAccountInformation(ActionEvent event) {
+		Scene mainScene = applicationStage.getScene();
 		
+		VBox rows = new VBox();
+		Label customerName = new Label("Customer name: " + customer.customerName);
+		Label customerID = new Label("Customer ID: " + customer.customerId);
+		Label checkingAmount = new Label("Checking account amount: " + 
+				Double.toString(checkingMoney.balance));
+		Label savingAmount = new Label("Saving account amount: " + Double.toString(saveMoney.balance));
+		Label investmentAmount = new Label("Investment account amount: " + 
+				Double.toString(investmentMoney.balance));
+		rows.getChildren().addAll(customerName,customerID,checkingAmount,savingAmount,investmentAmount);
+		Button doneButton = new Button("Done");
+        doneButton.setOnAction(doneEvent-> applicationStage.setScene(mainScene));
+        rows.getChildren().add(doneButton);
+		
+		Scene showAccountInfoPage = new Scene(rows,400,400);
+		applicationStage.setScene(showAccountInfoPage);
 	}
 
 	
 	
 	 void computeResult() {
 	  
+		 // this operation was done prevent memory leaks
 		 customer.savingsAccount = saveMoney;
 			customer.checkingAccount = checkingMoney;
 			customer.investAccount = investmentMoney;
 	    	
 	    	if (check == 0)
 	    	{
+	    		// it was prefered to store the value entered in the chaging 
+	    		//scene in a double first before because arrays are passed by reference
+	    		// this prevents possible privacy leaks
 	    		double toCompute1 = moneyToCompute[0];
 	    		double toCompute2 = moneyToCompute[1];
 	    		double toCompute3 = moneyToCompute[2];
@@ -191,6 +215,9 @@ public class BankFunctions {
 	    	}
 	    	if(check == 1)
 	    	{
+	    		// it was prefered to store the value entered in the chaging 
+	    		//scene in a double first before because arrays are passed by reference
+	    		// this prevents possible privacy leaks
 	    		double toWithdraw1 = withdrawToCompute[0];
 	    		double toWithdraw2 = withdrawToCompute[1];
 	    		double toWithdraw3 = withdrawToCompute[2];
