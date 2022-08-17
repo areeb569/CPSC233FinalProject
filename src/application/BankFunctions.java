@@ -246,7 +246,6 @@ public class BankFunctions {
 	  */
 	 boolean isValidAccountNumber(String accountNumber) {
 		 boolean valid = true;
-		 double i=0;
 		 try 
 			{ 
 				Integer.parseInt(customer.customerId);  
@@ -274,26 +273,41 @@ public class BankFunctions {
 	  */
 	 boolean isValidName(String customerName) {
 		boolean validName = true;
-		int numberOfSpace =0;
+		int numberOfWords =0;
+		char c[] = new char[customerName.length()];
+		String firstName;
+		String lastName;
 		
-		for(int i=0; i<=customer.customerName.length()-1; i++) {
-			if(customer.customerName.charAt(i)== ' ') {
-				numberOfSpace++;
-			}
+		for(int i =0; i< customerName.length();i++) {
+			c[i] = customerName.charAt(i);
+			
+			 if( ((i>0)&&(c[i]!=' ')&&(c[i-1]==' ')) || ((c[0]!=' ')&&(i==0)) )  
+                 numberOfWords++;  
+			
+				
 		}
 		
-		if(!Pattern.matches("[a-zA-Z]+", customerName))
-			validName = false;
-		
-		else if(customerName == null)
+		 if(customerName == null)
 			validName = false;
 		
 		else if(customerName.length() < 3)
 			validName = false;
 		
-		//else if(numberOfSpace != 1)
-			 //validName = false;
+		else if(numberOfWords != 2)
+			 validName = false;
 		
+		 String specialCharactersString = "!@#$%&*()'+,-./:;<=>?[]^_`{|}"
+		 		+ "1234567890";
+		 
+		 for (int i=0; i < customerName.length() ; i++)
+	        {
+	            char ch = customerName.charAt(i);
+	            if(specialCharactersString.contains(Character.toString(ch))) {
+	            	validName = false;
+	                break;
+	            }    
+	            
+	        }
 		
 		return validName;
 	 }
@@ -304,15 +318,14 @@ public class BankFunctions {
 	 
 	 boolean isValidAmount(double amount) {
 		 boolean validAmount = true;
-		 
-		 if(!(amount > 0))
+		
+		 if(!(amount > 0) || amount > customer.checkingAccount.getCheckingAmount() )
 			 validAmount = false;
-		 //String str = String.valueOf(amount);
-		// else if(!amount.hasNextDouble())
-		//	 validAmount = false;
-		 
+		 		 
 		 return validAmount;
 	 }
+	 
+	 
 	 
 	
 }
