@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class Checking extends BankAccount
 	{
 	private double checkingAmount = 0;
+	int compare = 0;
 	
 
 		
@@ -32,20 +33,25 @@ public class Checking extends BankAccount
 		}
 
 		
-		public void deposit(double amount) {
+		public void deposit(double toDeposit) {
 			
-				if (amount != 0)
+				if (toDeposit != compare)
 				{
-					balance = balance + amount;
+					balance = balance + toDeposit;
 				}
 		
 		}
 
-		public void withdraw(double amount)
+		public void withdraw(double toWithdraw)
 		{
-			if (amount != 0)
+			if (toWithdraw != compare)
 			{
-				balance = balance - amount;
+				//balance = balance - toWithdraw;
+				if (balance > toWithdraw)
+				{
+					balance = balance - toWithdraw;
+
+				}
 				
 			}
 		}

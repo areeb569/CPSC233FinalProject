@@ -3,11 +3,10 @@ package application;
 public class Investment extends BankAccount {
 	
 	private double investmentAmount = 0;
+	int compare = 0;
 
 	Investment(String name, String id) {
 		super(name, id);
-	//	customerName = name;
-		//customerId = id;
 		
 	}
 	
@@ -15,24 +14,29 @@ public class Investment extends BankAccount {
 	{
 		investmentAmount = balance;
 	}
-	double getInvestment()
+	public double getInvestment()
 	{
 		return investmentAmount;
 	}
 
 
-	public void deposit(double amount) {
-		if (amount != 0)
+	public void deposit(double toDeposit) {
+		if (toDeposit != 0)
 		{
-			balance = balance + amount;
+			balance = balance + toDeposit;
 		}
 	}
 
 
-	public void withdraw(double amount) {
-		if (amount != 0)
+	public void withdraw(double toWithdraw) {
+		if (toWithdraw != 0)
 		{
-			balance = balance - amount;
+			if (balance > toWithdraw)
+			{
+				balance = balance - toWithdraw;
+
+			}
+		//	balance = balance - toWithdraw;
 		}
 		
 	}

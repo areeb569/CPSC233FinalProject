@@ -34,7 +34,7 @@ public class BankFunctions {
 	@FXML
 	void enterAccountInfo(ActionEvent event) {
 		
-		
+  
 		Scene mainScene = applicationStage.getScene();
     	VBox allRows = new VBox();
     	ArrayList<TextField> moneyTextFields = new ArrayList<TextField>();
@@ -177,10 +177,10 @@ public class BankFunctions {
 		Label customerID = new Label("Customer ID: " + customer.get_Id());
 		
 		Label checkingAmount = new Label("Checking account amount: " + 
-				Double.toString(checkingMoney.balance));
-		Label savingAmount = new Label("Saving account amount: " + Double.toString(saveMoney.balance));
+				Double.toString(checkingMoney.getCheckingAmount()));
+		Label savingAmount = new Label("Saving account amount: " + Double.toString(saveMoney.getSaving()));
 		Label investmentAmount = new Label("Investment account amount: " + 
-				Double.toString(investmentMoney.balance));
+				Double.toString(investmentMoney.getInvestment()));
 		rows.getChildren().addAll(customerName,customerID,checkingAmount,savingAmount,investmentAmount);
 		Button doneButton = new Button("Done");
         doneButton.setOnAction(doneEvent-> applicationStage.setScene(mainScene));
@@ -208,6 +208,7 @@ public class BankFunctions {
 	    		double toCompute2 = moneyToCompute[1];
 	    		double toCompute3 = moneyToCompute[2];
 	    		customer.checkingAccount.deposit(toCompute1);
+	    		//customer.setCheckingAmount ();
 	    		customer.checkingAccount.setCheckingAmount();
 	    		customer.savingsAccount.deposit(toCompute2);
 	    		customer.savingsAccount.setSavings();
