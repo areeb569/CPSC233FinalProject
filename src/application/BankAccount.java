@@ -4,14 +4,33 @@ package application;
 	Investment investAccount ;                     
 	Savings savingsAccount ;                        
 	Checking checkingAccount ;               
-	public static String customerName;    
-	public static String customerId;               
+	private String customerName;    
+	private String customerId;               
 	                                               
 	BankAccount(String name, String id)            
 	 {                                             
 		 customerName = name;                         
 		 customerId = id;                             
-	 }                                             
+	 }  
+	
+	public void set_Name(String name)
+	{
+		customerName = name;    
+
+	}
+	public String get_Name()
+	{
+		return customerName;
+	}
+	
+	public void set_Id(String id)
+	{
+		customerId = id;
+	}
+	public String get_Id()
+	{
+		return customerId;
+	}
 	                                               
 	//public abstract void deposit(double amount); 
 	                                               

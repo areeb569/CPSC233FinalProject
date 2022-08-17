@@ -73,20 +73,21 @@ public class BankFunctions {
     	{
     		accountInfo[i] = checkingTextfield.get(i).getText();
     	}
-    	
-    	customer.customerName = accountInfo[0];
-    	customer.customerId = accountInfo[1];
-    	if(isValidAccountNumber(customer.customerId)) {
-    		System.out.println("The customer's ID: " + customer.customerId);
+    	 customer.set_Name(accountInfo[0]);
+    	//customer.customerName = accountInfo[0];
+    	 customer.set_Id(accountInfo[1]);
+    	//customer.customerId = accountInfo[1];
+    	if(isValidAccountNumber(customer.get_Id())) {
+    		System.out.println("The customer's ID: " + customer.get_Id());
     	}
     	else
-    		System.out.println(customer.customerId + " Is invalid ID, the ID should be a 6 digits integer number");
+    		System.out.println(customer.get_Id() + " Is invalid ID, the ID should be a 6 digits integer number");
     		
-    	if(isValidName(customer.customerName)) {
-    		System.out.println("The customer's name: " +customer.customerName);
+    	if(isValidName(customer.get_Name())) {
+    		System.out.println("The customer's name: " +customer.get_Name());
     	}
     	else
-        	System.out.println(customer.customerName + " This is Inavalid Name. your name should be in form of (firstname lastname)");
+        	System.out.println(customer.get_Name() + " This is Inavalid Name. your name should be in form of (firstname lastname)");
     	
     	
 
@@ -97,6 +98,10 @@ public class BankFunctions {
 	
 	
 	
+	private void set_Name(String string) {
+		// TODO Auto-generated method stub
+		
+	}
 	// this function loggs the user input entered in the changing scene text field for
 	//the deposit and withdraw function.
 	// money to compute is an array of double declared at the top of the program to
@@ -168,8 +173,9 @@ public class BankFunctions {
 		Scene mainScene = applicationStage.getScene();
 		
 		VBox rows = new VBox();
-		Label customerName = new Label("Customer name: " + customer.customerName);
-		Label customerID = new Label("Customer ID: " + customer.customerId);
+		Label customerName = new Label("Customer name: " + customer.get_Name());
+		Label customerID = new Label("Customer ID: " + customer.get_Id());
+		
 		Label checkingAmount = new Label("Checking account amount: " + 
 				Double.toString(checkingMoney.balance));
 		Label savingAmount = new Label("Saving account amount: " + Double.toString(saveMoney.balance));
@@ -248,7 +254,7 @@ public class BankFunctions {
 		 boolean valid = true;
 		 try 
 			{ 
-				Integer.parseInt(customer.customerId);  
+				Integer.parseInt(customer.get_Id());  
 				
 			}  
 			catch (NumberFormatException e)  
@@ -257,7 +263,7 @@ public class BankFunctions {
 				//System.out.println(customer.customerId + " is not a valid account number"); 
 			} 
 		 
-		 if(valid && customer.customerId.length() != 6)
+		 if(valid && customer.get_Id().length() != 6)
 			 valid = false;
 			 
 		 
