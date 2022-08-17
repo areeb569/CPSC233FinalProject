@@ -2,6 +2,7 @@ package application;
 
 public class Investment extends BankAccount {
 	
+	
 	private double investmentAmount = 0;
 	int compare = 0;
 
@@ -19,24 +20,26 @@ public class Investment extends BankAccount {
 		return investmentAmount;
 	}
 
+	// deposits the money in the account
 
 	public void deposit(double toDeposit) {
 		if (toDeposit != 0)
 		{
+			toDeposit = Math.abs(toDeposit);
 			balance = balance + toDeposit;
 		}
 	}
 
-
+	// withdraw from the account
 	public void withdraw(double toWithdraw) {
 		if (toWithdraw != 0)
 		{
 			if (balance > toWithdraw)
 			{
+				toWithdraw = Math.abs(toWithdraw);
 				balance = balance - toWithdraw;
 
 			}
-		//	balance = balance - toWithdraw;
 		}
 		
 	}

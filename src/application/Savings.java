@@ -19,22 +19,25 @@ public class Savings extends BankAccount{
 		return savingsAmount;
 	}
 
+	// deposits the money in the account
+
 	public void deposit(double toDeposit) {
 		if (toDeposit != compare)
 		{
+			toDeposit = Math.abs(toDeposit);
 			balance = balance + toDeposit;
 		}
 	}
-	
+	// withdraw from the account
 	public void withdraw(double toWithdraw) {
 		if (toWithdraw != compare)
 		{
 			if (balance > toWithdraw)
 			{
+				toWithdraw = Math.abs(toWithdraw);
 				balance = balance - toWithdraw;
 
 			}
-			//balance = balance - toWithdraw;
 		}
 		
 	}

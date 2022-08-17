@@ -16,10 +16,13 @@ import javafx.stage.Stage;
 
 public class BankFunctions {
 
-	String[] accountInfo = {"",""};
-	BankAccount customer = new BankAccount("", "");
+	String[] accountInfo = {"",""}; // to store the account info strored in the texfield
+	BankAccount customer = new BankAccount("", "");  // ounce customer's bank instance
 	
-	Savings saveMoney = new Savings("", "");
+	
+	// this 3 were created and initialised so that it doesn't have to be initialized 
+	// everytime the compute function is called because it creates a memory leak
+	Savings saveMoney = new Savings("", ""); 
 	Checking checkingMoney = new Checking("", "");
 	Investment investmentMoney = new Investment("", "");
 	
@@ -74,9 +77,7 @@ public class BankFunctions {
     		accountInfo[i] = checkingTextfield.get(i).getText();
     	}
     	 customer.set_Name(accountInfo[0]);
-    	//customer.customerName = accountInfo[0];
     	 customer.set_Id(accountInfo[1]);
-    	//customer.customerId = accountInfo[1];
     	if(isValidAccountNumber(customer.get_Id())) {
     		System.out.println("The customer's ID: " + customer.get_Id());
     	}
@@ -208,17 +209,12 @@ public class BankFunctions {
 	    		double toCompute2 = moneyToCompute[1];
 	    		double toCompute3 = moneyToCompute[2];
 	    		customer.checkingAccount.deposit(toCompute1);
-	    		//customer.setCheckingAmount ();
 	    		customer.checkingAccount.setCheckingAmount();
 	    		customer.savingsAccount.deposit(toCompute2);
 	    		customer.savingsAccount.setSavings();
 	    		customer.investAccount.deposit(toCompute3);
 	    		customer.investAccount.setInvestment();
-	    		
-	    		System.out.println("CHECKING AMOUNT ENTERED:  "+customer.checkingAccount.getCheckingAmount());
-		    	System.out.println("SAVING AMOUNT ENTERED:  "+customer.savingsAccount.getSaving());
-		    	System.out.println("INVESTMENT AMOUNT ENTERED:  "+customer.investAccount.getInvestment());
-		    
+	    
 	    	}
 	    	if(check == 1)
 	    	{
@@ -235,11 +231,7 @@ public class BankFunctions {
 	    		customer.savingsAccount.setSavings();
 	    		customer.investAccount.withdraw(toWithdraw3);
 	    		customer.investAccount.setInvestment();
-	    		
-	    		System.out.println("CHECKING AMOUNT ENTERED:  "+customer.checkingAccount.getCheckingAmount());
-		    	System.out.println("SAVING AMOUNT ENTERED:  "+customer.savingsAccount.getSaving());
-		    	System.out.println("INVESTMENT AMOUNT ENTERED:  "+customer.investAccount.getInvestment());
-		    
+	    
 	    	}
 	    	
 	    }
