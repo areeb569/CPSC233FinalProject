@@ -174,11 +174,26 @@ public class BankFunctions {
 		Scene mainScene = applicationStage.getScene();
 		
 		VBox rows = new VBox();
-		Label customerName = new Label("Customer name: " + customer.get_Name());
-		Label customerID = new Label("Customer ID: " + customer.get_Id());
+		Label customerName = new Label();
+		if(isValidName(customer.get_Name())) {
+			customerName.setText("Customer name: " + customer.get_Name());
+		}
+		else {
+			customerName.setText(customer.get_Name()+ " Invalid customer name");
+		}
+		
+		Label customerID = new Label();
+		if(isValidAccountNumber(customer.get_Id())) {
+			customerID.setText("Customer ID: " + customer.get_Id());
+		}
+		else {
+			customerID.setText(customer.get_Id()+ " Invalid customer ID");
+		}
+		//Label customerID = new Label("Customer ID: " + customer.get_Id());
 		
 		Label checkingAmount = new Label("Checking account amount: " + 
 				Double.toString(checkingMoney.getCheckingAmount()));
+		
 		Label savingAmount = new Label("Saving account amount: " + Double.toString(saveMoney.getSaving()));
 		Label investmentAmount = new Label("Investment account amount: " + 
 				Double.toString(investmentMoney.getInvestment()));
@@ -193,7 +208,11 @@ public class BankFunctions {
 
 	
 	
-	 void computeResult() {
+	 private boolean isValidId(String get_Id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	void computeResult() {
 	  
 		 // this operation was done prevent memory leaks
 		 customer.savingsAccount = saveMoney;
@@ -252,11 +271,10 @@ public class BankFunctions {
 			}  
 			catch (NumberFormatException e)  
 			{ 
-				valid = false;
-				//System.out.println(customer.customerId + " is not a valid account number"); 
+				valid = false; 
 			} 
 		 
-		 if(valid && customer.get_Id().length() != 6)
+		 if(customer.get_Id().length() != 6)
 			 valid = false;
 			 
 		 
@@ -274,8 +292,6 @@ public class BankFunctions {
 		boolean validName = true;
 		int numberOfWords =0;
 		char c[] = new char[customerName.length()];
-		String firstName;
-		String lastName;
 		
 		for(int i =0; i< customerName.length();i++) {
 			c[i] = customerName.charAt(i);
@@ -324,6 +340,17 @@ public class BankFunctions {
 		 return validAmount;
 	 }
 	 
+	 /*
+	  * Validate withdraw amount
+	  */
+	 boolean isValidWithdraw(double toWithdraw) {
+		 boolean validWith = true;
+		 
+		 if( !(toWithdraw > 0))
+			 validWith = false;
+		 
+		 return validWith;
+	 }
 	 
 	 
 	
