@@ -1,7 +1,6 @@
 package application;
 
 import java.util.ArrayList;
-import java.util.regex.Pattern;
 
 import javafx.event.ActionEvent;
 
@@ -34,6 +33,13 @@ public class BankFunctions {
 	int check = 0;
 	Stage applicationStage;
 	
+	/**
+	 * This method is utilized when you click the 'Enter account information' button. It
+	 * contains labels and textfields just like when you open the application and click that
+	 * button. It just sets the textfields and labels and adds them onto a new scene, where
+	 * the user can enter in their input. 
+	 * 
+	 */
 	@FXML
 	void enterAccountInfo(ActionEvent event) {
 		
@@ -70,6 +76,11 @@ public class BankFunctions {
 	
 	
 	}
+	
+	/**
+	 * This method just saves account info the user has entered and saves them in variables for
+	 * future use.
+	 */
 	void loadtheAccountEntered(Scene mainScene, ArrayList<TextField> checkingTextfield, int check)
     {
     	for(int i = 0; i <2; i++)
@@ -129,6 +140,12 @@ public class BankFunctions {
 	    }
 	// this function creates a new scene. it is used also for the function withdraw
 	  // just to prevent the code duplication
+	  /**
+	   *This function is utilized when you click the deposit button. It has labels and textfields
+	   *where it asks you to enter a deposit amount for 3 different accounts. It adds the labels and
+	   *textfields to a new scene where the user can enter information for depositing money for
+	   *each of the 3 bank accounts.
+	   */
 	@FXML
 	void depositMoney(ActionEvent event) {
 		
@@ -162,6 +179,9 @@ public class BankFunctions {
 
 	}
 	
+	/**This function does the same thing as the deposit money function, except it withdraws
+	 * money.
+	 */
 	@FXML
 	void withdrawMoney(ActionEvent event) {
 		check = 1;
@@ -169,6 +189,12 @@ public class BankFunctions {
 
 	}
 	
+	/**
+	 *This method is utilized when you click the 'Show account information' button. It has a bunch
+	 *of labels and adds them to a new scene. When you click on this button, it shows all of the
+	 *information that the user has entered for their customer info and the amount of money
+	 *that they have in each of their 3 bank accounts.
+	 */
 	@FXML
 	void showAccountInformation(ActionEvent event) {
 		Scene mainScene = applicationStage.getScene();
