@@ -19,7 +19,7 @@ public class BankFunctions {
 	String[] accountInfo = {"",""}; // to store the account info strored in the texfield
 	BankAccount customer = new BankAccount("", "");  // ounce customer's bank instance
 	
-	
+	double me = 0;
 	// this 3 were created and initialised so that it doesn't have to be initialized 
 	// everytime the compute function is called because it creates a memory leak
 	Savings saveMoney = new Savings("", ""); 
